@@ -32,6 +32,28 @@ public class RecursiveMethods {
         System.out.println(binarySum(array,0,array.length-1));
     */
 
+    /*
+        //sum of 2d array
+        int[][] array2d = new int[3][3];
+        int counter=1;
+        for (int i = 0; i < array2d.length; i++) {
+            for (int j = 0; j < array2d[0].length; j++) {
+                array2d[i][j]=counter;
+                counter++;
+            }
+        }
+        //print the array
+        System.out.println("The array is : ");
+        for (int i = 0; i < array2d.length; i++) {
+            for (int j = 0; j < array2d[0].length; j++) {
+                System.out.print(array2d[i][j]+" ");
+            }
+            System.out.println();
+        }
+
+        System.out.println("Sum of all elements in 2D array is: "+sumOfAllElementsIn2DArray(array2d,0,0));
+    */
+
 
     }
 
@@ -90,6 +112,16 @@ public class RecursiveMethods {
             return binarySum(data,firstIndex,middle)+binarySum(data,middle+1,lastIndex);
         }
 
+    }
+
+    public static int sumOfAllElementsIn2DArray(int[][] array,int rowIndex,int columnIndex){
+        if (rowIndex==array.length-1&&columnIndex==array[0].length-1){
+            return array[rowIndex][columnIndex];
+        }else if (columnIndex==array[0].length-1){
+            return array[rowIndex][columnIndex]+sumOfAllElementsIn2DArray(array,rowIndex+1,0);
+        }else {
+            return array[rowIndex][columnIndex]+sumOfAllElementsIn2DArray(array,rowIndex,columnIndex+1);
+        }
     }
 
 
