@@ -23,6 +23,11 @@ public class RecursiveMethods {
         System.out.println("Result power is : "+computePositivePower(2,10));
     */
 
+    /*
+        //Computer positive power with ( O(logn) )
+        System.out.println(computePositivePowerEfficient(2,10));
+    */
+
 
 
 
@@ -62,6 +67,15 @@ public class RecursiveMethods {
         }
     }
 
+    public static int computePositivePowerEfficient(int base,int power){
+        if (power==0){
+            return 1;
+        }else if(power%2==1) {
+            return base*computePositivePowerEfficient(base,(power)/2)*computePositivePowerEfficient(base,(power)/2);
+        }else{
+            return computePositivePowerEfficient(base,(power)/2)*computePositivePowerEfficient(base,(power)/2);
+        }
+    }
 
 
 }
