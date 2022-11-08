@@ -12,10 +12,19 @@ public class RecursiveMethods {
     /*
         //reverseArray
         int[] array2=reverseArray(array,0,array.length-1);
+        System.out.print("Reverse of given array is : ");
         for (int i = 0; i < array2.length; i++) {
             System.out.print(array2[i]+",");
         }
     */
+
+    /*
+        //Computer positive power
+        System.out.println("Result power is : "+computePositivePower(2,10));
+    */
+
+
+
 
     }
 
@@ -42,6 +51,14 @@ public class RecursiveMethods {
             data[firstIndex]=data[lastIndex];
             data[lastIndex]=temp;
             return reverseArray(data,firstIndex+1,lastIndex-1);
+        }
+    }
+
+    public static int computePositivePower(int base,int power){
+        if (power==0){
+            return 1;
+        }else {
+            return base*computePositivePower(base,power-1);
         }
     }
 
