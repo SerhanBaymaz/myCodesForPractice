@@ -2,7 +2,7 @@ package myCodesForPractice.recursiveMethods;
 
 public class RecursiveMethods {
     public static void main(String[] args) {
-        int[] array = {2,3,4,5,6,7,8,9,15,19};
+        int[] array = {1,2,3,4,5,6,7,8,9,10};
     /*
         //Linear Sum
 
@@ -28,7 +28,9 @@ public class RecursiveMethods {
         System.out.println(computePositivePowerEfficient(2,10));
     */
 
-
+    /*
+        System.out.println(binarySum(array,0,array.length-1));
+    */
 
 
     }
@@ -75,6 +77,19 @@ public class RecursiveMethods {
         }else{
             return computePositivePowerEfficient(base,(power)/2)*computePositivePowerEfficient(base,(power)/2);
         }
+    }
+
+    public static int binarySum(int[] data,int firstIndex,int lastIndex){
+        if (firstIndex>lastIndex){
+            return 0;
+        }
+        if (firstIndex==lastIndex){
+            return data[firstIndex];
+        }else {
+            int middle = (firstIndex+lastIndex)/2;
+            return binarySum(data,firstIndex,middle)+binarySum(data,middle+1,lastIndex);
+        }
+
     }
 
 
