@@ -6,6 +6,41 @@ public class MyBinarySearch {
        Index=       0   1   2   3   4   5   6   7   8
      */
 
+    public static boolean binarySearchWithPrint(int[] array,int searchingNumber,int minIndex,int maxIndex){
+        int middleIndex = (minIndex+maxIndex)/2;
+        if (minIndex>maxIndex){
+            return false;
+        }
+        if (minIndex==maxIndex&&searchingNumber!=array[middleIndex]){
+            return false;
+        }
+
+        if (searchingNumber==array[middleIndex]){
+            return true;
+        } else if (searchingNumber > array[middleIndex]) {
+            //new min will be middleIndex+1
+            //max stay same
+            System.out.println("***********************************");
+            System.out.println("Searching number = "+searchingNumber);
+            System.out.println("Middle number = "+array[(minIndex+(maxIndex-1))/2]);
+
+            printArray(array,middleIndex+1,maxIndex);
+            System.out.println();
+            System.out.println("***********************************");
+            return  binarySearchWithPrint(array,searchingNumber,middleIndex+1,maxIndex);
+        }else{
+            // min will be same.
+            // new max will be middleIndex-1
+
+            System.out.println("***********************************");
+            System.out.println("Searching number = "+searchingNumber);
+            System.out.println("Middle number = "+array[(minIndex+(maxIndex-1))/2]);
+            printArray(array,minIndex,middleIndex-1);
+            System.out.println();
+            System.out.println("***********************************");
+            return binarySearchWithPrint(array,searchingNumber,minIndex,middleIndex-1);
+        }
+    }
 
     public static boolean binarySearch(int[] array,int searchingNumber,int minIndex,int maxIndex){
         int middleIndex = (minIndex+maxIndex)/2;
@@ -47,8 +82,9 @@ public class MyBinarySearch {
         printArray(sortedArray,0,21);
         System.out.println();
         System.out.println();
-        
-        System.out.println(binarySearch(sortedArray,4,0,21));
+
+        //System.out.println(binarySearch(sortedArray,4,0,21));
+        System.out.println(binarySearchWithPrint(sortedArray,4,0,21));
 
         System.out.println("********************************************************************************");
     }
